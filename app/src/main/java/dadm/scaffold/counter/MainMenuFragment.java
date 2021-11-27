@@ -23,14 +23,22 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
         View rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
         return rootView;
     }
+    @Override
+    public void onPause() {
+        super.onPause();
 
+    }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_start).setOnClickListener(this);
         view.findViewById(R.id.btn_exit).setOnClickListener(this);
     }
-
+    @Override
+    public boolean onBackPressed() {
+        ((ScaffoldActivity)getActivity()).closeGame();
+        return true;
+    }
     @Override
     public void onClick(View v) {
         switch(v.getId()){
