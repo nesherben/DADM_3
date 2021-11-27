@@ -38,6 +38,10 @@ public class ScaffoldActivity extends AppCompatActivity {
         navigateToFragment( new GameFragment());
     }
 
+    public void closeGame(){
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
     private void navigateToFragment(BaseFragment dst) {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -48,10 +52,12 @@ public class ScaffoldActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        
         final BaseFragment fragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT);
         if (fragment == null || !fragment.onBackPressed()) {
             super.onBackPressed();
         }
+
     }
 
     public void navigateBack() {
