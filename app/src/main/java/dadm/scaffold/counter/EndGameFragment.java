@@ -18,6 +18,7 @@ import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.FramesPerSecondCounter;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameView;
+import dadm.scaffold.engine.ScoreCounter;
 import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.space.GameController;
 import dadm.scaffold.space.SpaceShipPlayer;
@@ -26,7 +27,9 @@ public class EndGameFragment extends BaseFragment implements View.OnClickListene
 
     String score = "Your Score here";
     public EndGameFragment(){
+        score = ScoreCounter.scorePoints + " pts";
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

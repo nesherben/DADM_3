@@ -14,7 +14,7 @@ public class ScoreCounter extends GameObject {
     private Paint paint;
     private long totalMillis;
     private int draws;
-    private int scorePoints;
+    public static int scorePoints;
 
     private String ScoreText = "";
 
@@ -35,7 +35,7 @@ public class ScoreCounter extends GameObject {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         totalMillis += elapsedMillis;
         if (totalMillis > 100) {
-            this.scorePoints = gameEngine.score;
+            scorePoints = gameEngine.score;
             ScoreText = scorePoints + " pts";
             totalMillis = 0;
             draws = 0;
