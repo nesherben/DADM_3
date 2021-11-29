@@ -3,12 +3,17 @@ package dadm.scaffold.space;
 import java.util.ArrayList;
 import java.util.List;
 
+import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
+import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.ScreenGameObject;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
 import dadm.scaffold.sound.GameEvent;
+
+
+
 
 public class SpaceShipPlayer extends Sprite {
 
@@ -99,10 +104,11 @@ public class SpaceShipPlayer extends Sprite {
     public void onCollision(GameEngine gameEngine, ScreenGameObject otherObject) {
         if (otherObject instanceof Asteroid) {
             gameEngine.removeGameObject(this);
-            //gameEngine.stopGame();
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
+            //end
+
         }
     }
 }

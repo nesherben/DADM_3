@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#262626"
     android:orientation="vertical"
-    tools:context="dadm.scaffold.counter.GameFragment">
+    android:visibility="visible"
+    tools:context="dadm.scaffold.counter.GameFragment"
+    tools:visibility="visible">
 
     <dadm.scaffold.engine.StandardGameView
         android:id="@+id/gameView"
@@ -13,14 +16,23 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:layout_gravity="top|right"
         android:id="@+id/btn_play_pause"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:text="@string/pause" />
 
-    <include layout="@layout/view_joystick"/>
+    <include layout="@layout/view_joystick" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="208dp"
+        android:layout_height="41dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="34sp" />
 
 </FrameLayout>

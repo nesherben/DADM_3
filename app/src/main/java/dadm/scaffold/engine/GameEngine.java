@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import dadm.scaffold.ScaffoldActivity;
+import dadm.scaffold.counter.EndGameFragment;
 import dadm.scaffold.input.InputController;
 import dadm.scaffold.sound.GameEvent;
 import dadm.scaffold.sound.SoundManager;
+import dadm.scaffold.space.GameController;
 
 public class GameEngine {
 
@@ -32,6 +35,8 @@ public class GameEngine {
     public int width;
     public int height;
     public double pixelFactor;
+
+    public int score;
 
     private Activity mainActivity;
 
@@ -62,6 +67,7 @@ public class GameEngine {
         stopGame();
 
         // Setup the game objects
+        score = 0;
         int nugameObjects = gameObjects.size();
         for (int i = 0; i < nugameObjects; i++) {
             gameObjects.get(i).startGame();
@@ -183,5 +189,8 @@ public class GameEngine {
         // We notify all the GameObjects
         // Also the sound manager
         soundManager.playSoundForGameEvent(gameEvent);
+    }
+    public void addScore(int score){
+      this.score += score;
     }
 }

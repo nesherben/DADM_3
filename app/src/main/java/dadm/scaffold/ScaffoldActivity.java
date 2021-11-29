@@ -2,10 +2,12 @@ package dadm.scaffold;
 
 import android.media.AudioManager;
 import android.os.Build;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import dadm.scaffold.counter.EndGameFragment;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
 import dadm.scaffold.sound.SoundManager;
@@ -42,7 +44,11 @@ public class ScaffoldActivity extends AppCompatActivity {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-    private void navigateToFragment(BaseFragment dst) {
+    public void GoToEnd(){
+
+    }
+
+    public void navigateToFragment(Fragment dst) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, dst, TAG_FRAGMENT)
