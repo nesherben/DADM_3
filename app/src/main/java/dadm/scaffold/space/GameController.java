@@ -31,7 +31,9 @@ public class GameController extends GameObject {
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         currentMillis += elapsedMillis;
+        if(gameEngine.dead = true){
 
+        }
         long waveTimestamp = enemiesSpawned*TIME_BETWEEN_ENEMIES;
         if (currentMillis > waveTimestamp) {
             // Spawn a new enemy

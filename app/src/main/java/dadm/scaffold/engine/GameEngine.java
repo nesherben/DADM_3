@@ -3,11 +3,13 @@ package dadm.scaffold.engine;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import dadm.scaffold.BaseFragment;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.counter.EndGameFragment;
 import dadm.scaffold.input.InputController;
@@ -35,6 +37,8 @@ public class GameEngine {
     public int width;
     public int height;
     public double pixelFactor;
+
+    public boolean dead = false;
 
     public int score;
 
@@ -68,6 +72,7 @@ public class GameEngine {
 
         // Setup the game objects
         score = 0;
+        dead = false;
         int nugameObjects = gameObjects.size();
         for (int i = 0; i < nugameObjects; i++) {
             gameObjects.get(i).startGame();
@@ -189,8 +194,10 @@ public class GameEngine {
         // We notify all the GameObjects
         // Also the sound manager
         soundManager.playSoundForGameEvent(gameEvent);
+
     }
     public void addScore(int score){
       this.score += score;
     }
+
 }

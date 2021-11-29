@@ -10,6 +10,7 @@ import android.view.View;
 import dadm.scaffold.counter.EndGameFragment;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
+import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.sound.SoundManager;
 
 public class ScaffoldActivity extends AppCompatActivity {
@@ -45,7 +46,7 @@ public class ScaffoldActivity extends AppCompatActivity {
     }
 
     public void GoToEnd(){
-
+        navigateToFragment( new EndGameFragment());
     }
 
     public void navigateToFragment(Fragment dst) {

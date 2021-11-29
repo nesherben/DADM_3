@@ -30,7 +30,7 @@
         android:id="@+id/textView"
         android:layout_width="208dp"
         android:layout_height="41dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="34sp" />

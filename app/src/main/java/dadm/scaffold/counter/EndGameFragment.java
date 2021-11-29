@@ -1,5 +1,6 @@
 package dadm.scaffold.counter;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.TextClock;
+import android.widget.TextView;
 
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
@@ -18,15 +21,17 @@ import dadm.scaffold.engine.GameView;
 import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.space.GameController;
 import dadm.scaffold.space.SpaceShipPlayer;
+
 public class EndGameFragment extends BaseFragment implements View.OnClickListener{
 
-    public EndGameFragment(){}
-
+    String score = "Your Score here";
+    public EndGameFragment(){
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //GetScore
-        View rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
+        View rootView = inflater.inflate(R.layout.end_game_fragment, container, false);
         return rootView;
     }
     @Override

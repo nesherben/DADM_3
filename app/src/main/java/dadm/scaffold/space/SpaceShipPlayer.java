@@ -15,7 +15,7 @@ import dadm.scaffold.sound.GameEvent;
 
 
 
-public class SpaceShipPlayer extends Sprite {
+public class SpaceShipPlayer extends Sprite{
 
     private static final int INITIAL_BULLET_POOL_AMOUNT = 6;
     private static final long TIME_BETWEEN_BULLETS = 250;
@@ -25,7 +25,7 @@ public class SpaceShipPlayer extends Sprite {
     private int maxX;
     private int maxY;
     private double speedFactor;
-
+    public ScaffoldActivity activity = new ScaffoldActivity();
 
     public SpaceShipPlayer(GameEngine gameEngine){
         super(gameEngine, R.drawable.ship);
@@ -103,11 +103,12 @@ public class SpaceShipPlayer extends Sprite {
     @Override
     public void onCollision(GameEngine gameEngine, ScreenGameObject otherObject) {
         if (otherObject instanceof Asteroid) {
+            gameEngine.dead = true;
             gameEngine.removeGameObject(this);
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
-            //end
+
 
         }
     }
