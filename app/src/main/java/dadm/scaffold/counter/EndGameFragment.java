@@ -30,13 +30,14 @@ public class EndGameFragment extends BaseFragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //GetScore
         View rootView = inflater.inflate(R.layout.end_game_fragment, container, false);
         return rootView;
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        TextView tv = (TextView) getView().findViewById(R.id.textView4);
+        tv.setText(score);
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {

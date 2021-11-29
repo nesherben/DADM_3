@@ -45,10 +45,6 @@ public class ScaffoldActivity extends AppCompatActivity {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-    public void GoToEnd(){
-        navigateToFragment( new EndGameFragment());
-    }
-
     public void navigateToFragment(Fragment dst) {
         getSupportFragmentManager()
                 .beginTransaction()

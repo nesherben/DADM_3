@@ -6,6 +6,7 @@ import java.util.List;
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
+import dadm.scaffold.counter.EndGameFragment;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.ScreenGameObject;
 import dadm.scaffold.engine.Sprite;
@@ -103,12 +104,11 @@ public class SpaceShipPlayer extends Sprite{
     @Override
     public void onCollision(GameEngine gameEngine, ScreenGameObject otherObject) {
         if (otherObject instanceof Asteroid) {
-            gameEngine.dead = true;
             gameEngine.removeGameObject(this);
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
-
+            ((ScaffoldActivity) gameEngine.mainActivity).navigateToFragment(new EndGameFragment());
 
         }
     }

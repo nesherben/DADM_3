@@ -42,7 +42,7 @@ public class GameEngine {
 
     public int score;
 
-    private Activity mainActivity;
+    public Activity mainActivity;
 
     public GameEngine(Activity activity, GameView gameView) {
         mainActivity = activity;

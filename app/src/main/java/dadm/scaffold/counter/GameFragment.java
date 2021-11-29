@@ -71,7 +71,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
         if (theGameEngine.isRunning()){
-            pauseGameAndShowPauseDialog();
+            //pauseGameAndShowPauseDialog();
         }
     }
 
