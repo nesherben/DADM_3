@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,9 +13,10 @@ import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.ScoreCounter;
+import dadm.scaffold.space.SpaceShipPlayer;
 
 
-public class MainMenuFragment extends BaseFragment implements View.OnClickListener {
+public class MainMenuFragment extends BaseFragment implements View.OnClickListener{
     public MainMenuFragment() {
     }
 
@@ -34,7 +36,9 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_start).setOnClickListener(this);
         view.findViewById(R.id.btn_exit).setOnClickListener(this);
+        view.findViewById(R.id.switch1).setOnClickListener(this);
     }
+
     @Override
     public boolean onBackPressed() {
         ((ScaffoldActivity)getActivity()).closeGame();
@@ -49,7 +53,11 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
             case R.id.btn_start:
                 ((ScaffoldActivity)getActivity()).startGame();
                 break;
+            case R.id.switch1:
+                ((ScaffoldActivity)getActivity()).toggleSwitch();
+                break;
             default: break;
         }
     }
+
 }

@@ -69,7 +69,7 @@ public class GameEngine {
 
         // Setup the game objects
         ScoreCounter.scorePoints = 0;
-        dead = false;
+        HPCounter.HP = 2; //3 hp
         int nugameObjects = gameObjects.size();
         for (int i = 0; i < nugameObjects; i++) {
             gameObjects.get(i).startGame();

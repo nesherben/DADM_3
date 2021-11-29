@@ -15,6 +15,7 @@ import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.FramesPerSecondCounter;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameView;
+import dadm.scaffold.engine.HPCounter;
 import dadm.scaffold.engine.ScoreCounter;
 import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.space.GameController;
@@ -52,6 +53,9 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
                 //add points
                 theGameEngine.addGameObject(new ScoreCounter(theGameEngine));
+                //add hp
+                theGameEngine.addGameObject(new HPCounter(theGameEngine));
+
                 theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.addGameObject(new GameController(theGameEngine));
                 theGameEngine.dead = false;

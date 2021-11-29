@@ -12,6 +12,7 @@ import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.sound.SoundManager;
+import dadm.scaffold.space.SpaceShipPlayer;
 
 public class ScaffoldActivity extends AppCompatActivity {
 
@@ -43,6 +44,10 @@ public class ScaffoldActivity extends AppCompatActivity {
 
     public void closeGame(){
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    public void toggleSwitch(){
+        SpaceShipPlayer.proType = !SpaceShipPlayer.proType;
     }
 
     public void navigateToFragment(Fragment dst) {

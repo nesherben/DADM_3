@@ -31,13 +31,6 @@
         app:layout_constraintVertical_bias="0.618" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="987dp"
-        android:layout_height="601dp"
-        tools:layout_editor_absoluteX="-128dp"
-        tools:layout_editor_absoluteY="-95dp" />
-
-    <ImageView
         android:id="@+id/imageView"
         android:layout_width="729dp"
         android:layout_height="165dp"
@@ -49,5 +42,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.115"
         app:srcCompat="@drawable/logo" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/pro_ship"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.604" />
 
 </android.support.constraint.ConstraintLayout>

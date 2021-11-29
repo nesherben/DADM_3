@@ -8,6 +8,7 @@ import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.counter.EndGameFragment;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.HPCounter;
 import dadm.scaffold.engine.ScreenGameObject;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
@@ -26,7 +27,9 @@ public class SpaceShipPlayer extends Sprite{
     private int maxX;
     private int maxY;
     private double speedFactor;
-    public ScaffoldActivity activity = new ScaffoldActivity();
+
+    public static boolean proType = false;
+
 
     public SpaceShipPlayer(GameEngine gameEngine){
         super(gameEngine, R.drawable.ship);
@@ -104,12 +107,16 @@ public class SpaceShipPlayer extends Sprite{
     @Override
     public void onCollision(GameEngine gameEngine, ScreenGameObject otherObject) {
         if (otherObject instanceof Asteroid) {
-            gameEngine.removeGameObject(this);
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.SpaceshipHit);
-            ((ScaffoldActivity) gameEngine.mainActivity).navigateToFragment(new EndGameFragment());
-
+            if(HPCounter.HP > 0){
+                HPCounter.HP--;
+            }
+            else{
+                gameEngine.removeGameObject(this);
+                ((ScaffoldActivity) gameEngine.mainActivity).navigateToFragment(new EndGameFragment());
+            }
         }
     }
 }
