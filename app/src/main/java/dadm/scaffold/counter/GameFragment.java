@@ -50,7 +50,13 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 theGameEngine = new GameEngine(getActivity(), gameView);
                 theGameEngine.setSoundManager(getScaffoldActivity().getSoundManager());
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
-                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
+
+                if(SpaceShipPlayer.proType){
+                    theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, R.drawable.ship2));
+                }else{
+                    theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, R.drawable.ship));
+                }
+
                 //add points
                 theGameEngine.addGameObject(new ScoreCounter(theGameEngine));
                 //add hp

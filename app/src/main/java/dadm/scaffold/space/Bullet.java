@@ -12,11 +12,12 @@ public class Bullet extends Sprite {
     private double speedFactor;
 
     private SpaceShipPlayer parent;
+    private float movX;
 
     public Bullet(GameEngine gameEngine){
         super(gameEngine, R.drawable.bullet);
 
-        speedFactor = gameEngine.pixelFactor * -300d / 1000d;
+        speedFactor = gameEngine.pixelFactor * -280d / 1000d;
     }
 
     @Override
@@ -30,13 +31,19 @@ public class Bullet extends Sprite {
             // And return it to the pool
             parent.releaseBullet(this);
         }
+        positionX += movX * 0.8f * speedFactor * elapsedMillis;
+        if (positionX < -height) {
+            gameEngine.removeGameObject(this);
+            // And return it to the pool
+            parent.releaseBullet(this);
+        }
     }
 
-
-    public void init(SpaceShipPlayer parentPlayer, double initPositionX, double initPositionY) {
+    public void init(SpaceShipPlayer parentPlayer, double initPositionX, double initPositionY, int Mx) {
         positionX = initPositionX - width/2;
         positionY = initPositionY - height/2;
         parent = parentPlayer;
+        movX = Mx;
     }
 
     private void removeObject(GameEngine gameEngine) {
@@ -53,7 +60,7 @@ public class Bullet extends Sprite {
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.AsteroidHit);
-            ScoreCounter.scorePoints += 100;
+            ScoreCounter.scorePoints += 25;
         }
     }
 }

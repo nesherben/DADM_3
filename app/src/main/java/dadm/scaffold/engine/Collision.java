@@ -11,6 +11,7 @@ public class Collision {
     public ScreenGameObject objectB;
 
     public static Collision init(ScreenGameObject objectA, ScreenGameObject objectB) {
+        collisionPool = new ArrayList<Collision>();
         if (collisionPool.isEmpty()) {
             return new Collision(objectA, objectB);
         }

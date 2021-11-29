@@ -6,7 +6,7 @@ public class InputController {
 
     public double horizontalFactor;
     public double verticalFactor;
-
+    public boolean isMoving;
     public boolean isFiring;
 
     //endregion

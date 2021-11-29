@@ -16,6 +16,7 @@ import dadm.scaffold.input.InputController;
 import dadm.scaffold.sound.GameEvent;
 import dadm.scaffold.sound.SoundManager;
 import dadm.scaffold.space.GameController;
+import dadm.scaffold.space.SpaceShipPlayer;
 
 public class GameEngine {
 
@@ -69,7 +70,12 @@ public class GameEngine {
 
         // Setup the game objects
         ScoreCounter.scorePoints = 0;
-        HPCounter.HP = 2; //3 hp
+        if(!SpaceShipPlayer.proType){
+            HPCounter.HP = 2; //3 hp
+        }else {
+            //you are pro lol
+            HPCounter.HP = 0; //1hp
+        }
         int nugameObjects = gameObjects.size();
         for (int i = 0; i < nugameObjects; i++) {
             gameObjects.get(i).startGame();

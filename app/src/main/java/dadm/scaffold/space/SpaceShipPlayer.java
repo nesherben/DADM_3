@@ -19,8 +19,8 @@ import dadm.scaffold.sound.GameEvent;
 
 public class SpaceShipPlayer extends Sprite{
 
-    private static final int INITIAL_BULLET_POOL_AMOUNT = 6;
-    private static final long TIME_BETWEEN_BULLETS = 250;
+    private static final int INITIAL_BULLET_POOL_AMOUNT = 50;
+    private static final long TIME_BETWEEN_BULLETS = 450;
     List<Bullet> bullets = new ArrayList<Bullet>();
     private long timeSinceLastFire;
 
@@ -31,12 +31,15 @@ public class SpaceShipPlayer extends Sprite{
     public static boolean proType = false;
 
 
-    public SpaceShipPlayer(GameEngine gameEngine){
-        super(gameEngine, R.drawable.ship);
-        speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
+    public SpaceShipPlayer(GameEngine gameEngine, int ship){
+        super(gameEngine, ship);
+        if(!proType) {
+            speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
+        }else{
+            speedFactor = pixelFactor * 250d / 1000d; // We want to move at 100px per second on a 400px tall screen
+        }
         maxX = gameEngine.width - width;
         maxY = gameEngine.height - height;
-
         initBulletPool(gameEngine);
     }
 
@@ -67,6 +70,7 @@ public class SpaceShipPlayer extends Sprite{
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         // Get the info from the inputController
+
         updatePosition(elapsedMillis, gameEngine.theInputController);
         checkFiring(elapsedMillis, gameEngine);
     }
@@ -89,15 +93,58 @@ public class SpaceShipPlayer extends Sprite{
     }
 
     private void checkFiring(long elapsedMillis, GameEngine gameEngine) {
-        if (gameEngine.theInputController.isFiring && timeSinceLastFire > TIME_BETWEEN_BULLETS) {
-            Bullet bullet = getBullet();
-            if (bullet == null) {
-                return;
+        if(timeSinceLastFire > TIME_BETWEEN_BULLETS) {
+            if(gameEngine.theInputController.isMoving) {
+                Bullet bullet1 = getBullet();
+                if (bullet1 == null) {
+                    return;
+                }
+                Bullet bullet2 = getBullet();
+                if (bullet2 == null) {
+                    releaseBullet(bullet1);
+                    return;
+                }
+                bullet1.init(this, positionX + width / 2, positionY, 0);
+                bullet2.init(this, positionX + width / 2 - 75, positionY, 0);
+                gameEngine.addGameObject(bullet1);
+                gameEngine.addGameObject(bullet2);
+                timeSinceLastFire = 0;
+                gameEngine.onGameEvent(GameEvent.LaserFired);
             }
-            bullet.init(this, positionX + width/2, positionY);
-            gameEngine.addGameObject(bullet);
-            timeSinceLastFire = 0;
-            gameEngine.onGameEvent(GameEvent.LaserFired);
+            if (gameEngine.theInputController.isFiring) {
+                Bullet bullet3 = getBullet();
+                if (bullet3 == null) {
+                    return;
+                }
+                Bullet bullet4 = getBullet();
+                if (bullet4 == null) {
+                    releaseBullet(bullet3);
+                    return;
+                }
+                Bullet bullet5 = getBullet();
+                if (bullet5 == null) {
+                    releaseBullet(bullet3);
+                    releaseBullet(bullet4);
+                    return;
+                }
+                Bullet bullet6 = getBullet();
+                if (bullet6 == null) {
+                    releaseBullet(bullet3);
+                    releaseBullet(bullet4);
+                    releaseBullet(bullet5);
+                    return;
+                }
+                bullet3.init(this, positionX + width / 2, positionY, 1);
+                bullet4.init(this, positionX + width / 2 - 75, positionY, 1);
+                bullet5.init(this, positionX + width / 2, positionY, -1);
+                bullet6.init(this, positionX + width / 2 - 75, positionY, -1);
+                gameEngine.addGameObject(bullet3);
+                gameEngine.addGameObject(bullet4);
+                gameEngine.addGameObject(bullet5);
+                gameEngine.addGameObject(bullet6);
+                gameEngine.onGameEvent(GameEvent.LaserFired);
+                timeSinceLastFire = 0;
+            }
         }
         else {
             timeSinceLastFire += elapsedMillis;
