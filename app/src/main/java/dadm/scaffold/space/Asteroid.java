@@ -16,7 +16,7 @@ public class Asteroid extends Sprite {
 
     public Asteroid(GameController gameController, GameEngine gameEngine) {
         super(gameEngine, R.drawable.a10000);
-        this.speed = 200d * pixelFactor/1000d;
+        this.speed = 300d * pixelFactor/1000d;
         this.gameController = gameController;
     }
 
@@ -29,7 +29,7 @@ public class Asteroid extends Sprite {
         positionX = gameEngine.random.nextInt(gameEngine.width/2)+gameEngine.width/4;
         // They initialize outside of the screen vertically
         positionY = -height;
-        rotationSpeed = angle*(180d / Math.PI)/250d; // They rotate 4 times their ange in a second.
+        //rotationSpeed = angle*(180d / Math.PI)/250d; // They rotate 4 times their ange in a second.
         rotation = gameEngine.random.nextInt(360);
     }
 
@@ -47,7 +47,8 @@ public class Asteroid extends Sprite {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         positionX += speedX * elapsedMillis;
         positionY += speedY * elapsedMillis;
-        rotation += rotationSpeed * elapsedMillis;
+        //rotation += rotationSpeed * elapsedMillis;
+        rotation = 0;
         if (rotation > 360) {
             rotation = 0;
         }
