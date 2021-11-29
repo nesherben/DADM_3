@@ -40,13 +40,10 @@ public class GameEngine {
 
     public boolean dead = false;
 
-    public int score;
-
     public Activity mainActivity;
 
     public GameEngine(Activity activity, GameView gameView) {
         mainActivity = activity;
-
         theGameView = gameView;
         theGameView.setGameObjects(this.gameObjects);
 
@@ -71,7 +68,7 @@ public class GameEngine {
         stopGame();
 
         // Setup the game objects
-        score = 0;
+        ScoreCounter.scorePoints = 0;
         dead = false;
         int nugameObjects = gameObjects.size();
         for (int i = 0; i < nugameObjects; i++) {
@@ -195,9 +192,6 @@ public class GameEngine {
         // Also the sound manager
         soundManager.playSoundForGameEvent(gameEvent);
 
-    }
-    public void addScore(int score){
-      this.score += score;
     }
 
 }

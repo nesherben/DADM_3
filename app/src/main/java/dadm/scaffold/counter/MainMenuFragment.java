@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
+import dadm.scaffold.engine.ScoreCounter;
 
 
 public class MainMenuFragment extends BaseFragment implements View.OnClickListener {

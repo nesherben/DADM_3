@@ -54,7 +54,6 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 theGameEngine.addGameObject(new ScoreCounter(theGameEngine));
                 theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.addGameObject(new GameController(theGameEngine));
-                theGameEngine.score = 0;
                 theGameEngine.dead = false;
                 theGameEngine.startGame();
             }

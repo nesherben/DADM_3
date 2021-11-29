@@ -35,7 +35,6 @@ public class ScoreCounter extends GameObject {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         totalMillis += elapsedMillis;
         if (totalMillis > 100) {
-            scorePoints = gameEngine.score;
             ScoreText = scorePoints + " pts";
             totalMillis = 0;
             draws = 0;

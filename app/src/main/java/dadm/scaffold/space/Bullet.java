@@ -2,6 +2,7 @@ package dadm.scaffold.space;
 
 import dadm.scaffold.R;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.ScoreCounter;
 import dadm.scaffold.engine.ScreenGameObject;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.sound.GameEvent;
@@ -52,7 +53,7 @@ public class Bullet extends Sprite {
             Asteroid a = (Asteroid) otherObject;
             a.removeObject(gameEngine);
             gameEngine.onGameEvent(GameEvent.AsteroidHit);
-            gameEngine.addScore(100);
+            ScoreCounter.scorePoints += 100;
         }
     }
 }
